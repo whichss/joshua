@@ -26,6 +26,6 @@ document.addEventListener('DOMContentLoaded', function() {
     typeAnimation(typing1, 'Shema', 0);
     typeAnimation(typing2, 'Israel', 800);
     typeAnimation(typing3, '이스라엘아 들으라!', 1600);
-    typeAnimation(typing4, '믿음으로 하나되어, 은혜로 채워지는 시간', 2400);
+    typeAnimation(typing4, '이스라엘아 들으라 우리 하나님 여호와는 오직 유일한 여호와이시니', 2400);
   }
 });
