@@ -23,9 +23,9 @@ document.addEventListener('DOMContentLoaded', function() {
   const typing4 = document.getElementById('typing-4');
 
   if (typing1 && typing2 && typing3 && typing4) {
-    typeAnimation(typing1, 'SUMMER', 0);
-    typeAnimation(typing2, 'RETREAT', 800);
-    typeAnimation(typing3, '2024', 1600);
+    typeAnimation(typing1, 'Shema', 0);
+    typeAnimation(typing2, 'Israel', 800);
+    typeAnimation(typing3, '이스라엘아 들으라!', 1600);
     typeAnimation(typing4, '믿음으로 하나되어, 은혜로 채워지는 시간', 2400);
   }
 });
