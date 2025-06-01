@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>방 배정 - 교회 수련회 2024</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="wrapper">
+    <!-- 헤더 -->
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">
+            <a href="index.html">RETREAT'24</a>
+          </div>
+          <nav class="desktop-nav">
+            <ul>
+              <li><a href="index.html#about">소개</a></li>
+              <li><a href="index.html#schedule">일정</a></li>
+              <li><a href="team-assignment.html">팀 배정</a></li>
+              <li><a href="room-assignment.html" class="active">방 배정</a></li>
+              <li><a href="index.html#register">신청</a></li>
+            </ul>
+          </nav>
+          <div class="header-actions">
+            <button class="btn btn-outline">CONTACT</button>
+            <button class="mobile-menu-btn">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 모바일 메뉴 -->
+    <div class="mobile-menu">
+      <button class="mobile-menu-close">
+        <i class="fas fa-times"></i>
+      </button>
+      <nav>
+        <ul>
+          <li><a href="index.html#about" class="mobile-link">소개</a></li>
+          <li><a href="index.html#schedule" class="mobile-link">일정</a></li>
+          <li><a href="team-assignment.html" class="mobile-link">팀 배정</a></li>
+          <li><a href="room-assignment.html" class="mobile-link">방 배정</a></li>
+          <li><a href="index.html#register" class="mobile-link">신청</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <main>
+      <section class="page-section room-assignment">
+        <div class="container">
+          <div class="page-header">
+            <div class="section-tag light">ROOM ASSIGNMENT</div>
+            <h1 class="page-title">방 배정</h1>
+            <p class="page-subtitle">수련회 기간 동안 사용할 숙소 정보를 확인하세요. 각 방에는 같은 성별의 참가자들이 배정되어 있습니다.</p>
+          </div>
+
+          <div class="search-container">
+            <div class="search-input-wrapper">
+              <i class="fas fa-search"></i>
+              <input type="text" id="room-search" placeholder="이름으로 검색" class="search-input">
+            </div>
+          </div>
+
+          <div id="search-results" class="search-results hidden">
+            <h2 class="results-title">검색 결과</h2>
+            <div id="participant-results" class="participant-results">
+              <!-- 검색 결과는 JavaScript로 동적 생성됩니다 -->
+            </div>
+            <div id="no-search-results" class="no-results hidden">
+              <p>검색 결과가 없습니다.</p>
+            </div>
+          </div>
+
+          <div class="tabs">
+            <div class="tab-list" id="building-tabs">
+              <!-- 건물 탭은 JavaScript로 동적 생성됩니다 -->
+            </div>
+            <div class="tab-content" id="building-content">
+              <!-- 건물별 내용은 JavaScript로 동적 생성됩니다 -->
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-info">
+            <div class="footer-logo">RETREAT'24</div>
+            <p class="footer-desc">믿음과 사랑으로 세상을 변화시키는 공동체</p>
+          </div>
+          <div class="footer-contact">
+            <h3 class="footer-title">연락처</h3>
+            <ul class="footer-contact-list">
+              <li>
+                <i class="fas fa-map-marker-alt"></i>
+                <span>서울특별시 강남구 사랑로 123</span>
+              </li>
+              <li>
+                <i class="fas fa-phone"></i>
+                <span>02-123-4567</span>
+              </li>
+              <li>
+                <i class="fas fa-envelope"></i>
+                <span>info@sarang.church</span>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-worship">
+            <h3 class="footer-title">예배 시간</h3>
+            <ul class="footer-worship-list">
+              <li>
+                <i class="fas fa-calendar"></i>
+                <div>
+                  <p class="worship-title">주일 예배</p>
+                  <p class="worship-time">오전 11시</p>
+                </div>
+              </li>
+              <li>
+                <i class="fas fa-calendar"></i>
+                <div>
+                  <p class="worship-title">수요 예배</p>
+                  <p class="worship-time">오후 7시</p>
+                </div>
+              </li>
+              <li>
+                <i class="fas fa-calendar"></i>
+                <div>
+                  <p class="worship-title">금요 기도회</p>
+                  <p class="worship-time">오후 8시</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; <span id="current-year"></span> 사랑의 교회. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/room-assignment.js"></script>
+</body>
+</html>
