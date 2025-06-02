@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>상세 일정표 - JOSHUA 25</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .schedule-detail {
+      padding-top: 8rem;
+      min-height: 100vh;
+      background-color: var(--color-black);
+    }
+    
+    .timeline-container {
+      position: relative;
+      padding: 2rem 0;
+    }
+    
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .current-status {
+      background-color: rgba(59, 130, 246, 0.2);
+      border: 1px solid var(--color-blue-400);
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--color-blue-400);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    
+    .day-tabs {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+    }
+    
+    .day-tab {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    
+    .day-tab:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-color: var(--color-blue-400);
+    }
+    
+    .day-tab.active {
+      background-color: var(--color-blue-600);
+      border-color: var(--color-blue-600);
+    }
+    
+    .day-tab.current {
+      border-color: var(--color-blue-400);
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+    }
+    
+    .day-tab-title {
+      font-weight: 700;
+      font-size: 1.125rem;
+    }
+    
+    .day-tab-date {
+      font-size: 0.875rem;
+      color: var(--color-gray-400);
+    }
+    
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .timeline-item {
+      position: relative;
+      padding-bottom: 2rem;
+      opacity: 0.5;
+      transition: opacity 0.3s ease;
+    }
+    
+    .timeline-item.active {
+      opacity: 1;
+    }
+    
+    .timeline-item.current {
+      opacity: 1;
+    }
+    
+    .timeline-item.current .timeline-content {
+      background-color: rgba(59, 130, 246, 0.1);
+      border-color: var(--color-blue-400);
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.5rem;
+      top: 0.5rem;
+      width: 12px;
+      height: 12px;
+      background-color: var(--color-gray-600);
+      border-radius: 50%;
+      border: 2px solid var(--color-black);
+      z-index: 1;
+    }
+    
+    .timeline-item.active::before {
+      background-color: var(--color-blue-400);
+    }
+    
+    .timeline-item.current::before {
+      background-color: var(--color-blue-400);
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3);
+      animation: pulse 2s infinite;
+    }
+    
+    .timeline-time {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-blue-400);
+      margin-bottom: 0.5rem;
+      font-family: monospace;
+    }
+    
+    .timeline-content {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .timeline-content:hover {
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+    
+    .timeline-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    .timeline-description {
+      color: var(--color-gray-400);
+      margin-bottom: 1rem;
+    }
+    
+    .timeline-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.875rem;
+    }
+    
+    .timeline-detail {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--color-gray-300);
+    }
+    
+    .timeline-detail i {
+      color: var(--color-blue-400);
+    }
+    
+    .view-toggle {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .view-btn {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: var(--color-white);
+      font-size: 0.875rem;
+    }
+    
+    .view-btn:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .view-btn.active {
+      background-color: var(--color-blue-600);
+      border-color: var(--color-blue-600);
+    }
+    
+    .overview-mode {
+      display: none;
+    }
+    
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    @media (min-width: 768px) {
+      .overview-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    .countdown {
+      background-color: rgba(59, 130, 246, 0.1);
+      border: 1px solid var(--color-blue-400);
+      padding: 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .countdown-title {
+      font-size: 1.125rem;
+      margin-bottom: 1rem;
+      color: var(--color-gray-300);
+    }
+    
+    .countdown-timer {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .countdown-item {
+      text-align: center;
+    }
+    
+    .countdown-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--color-blue-400);
+      display: block;
+      line-height: 1;
+    }
+    
+    .countdown-label {
+      font-size: 0.875rem;
+      color: var(--color-gray-400);
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <!-- 헤더 -->
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">
+            <a href="index.html">JOSHUA 25</a>
+          </div>
+          <nav class="desktop-nav">
+            <ul>
+              <li><a href="index.html">소개</a></li>
+              <li><a href="schedule-detail.html">상세 일정</a></li>
+              <li><a href="404.html">팀 배정</a></li>
+              <li><a href="404.html">방 배정</a></li>
+              <!--<li><a href="team-assignment.html">팀 배정</a></li>
+              <li><a href="room-assignment.html">방 배정</a></li>-->
+              <li><a href="#register">신청</a></li>
+            </ul>
+          </nav>
+          <div class="header-actions">
+            <button class="btn btn-outline">CONTACT</button>
+            <button class="mobile-menu-btn">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 모바일 메뉴 -->
+    <div class="mobile-menu">
+      <button class="mobile-menu-close">
+        <i class="fas fa-times"></i>
+      </button>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="mobile-link">소개</a></li>
+          <li><a href="schedule-detail.html" class="mobile-link">상세 일정</a></li>
+          <li><a href="404.html">팀 배정</a></li>
+          <li><a href="404.html">방 배정</a></li>
+          <!--<li><a href="team-assignment.html">팀 배정</a></li>
+          <li><a href="room-assignment.html">방 배정</a></li>-->
+          <li><a href="#register" class="mobile-link">신청</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <main>
+      <section class="page-section schedule-detail">
+        <div class="container">
+          <div class="page-header">
+            <div class="section-tag light">DETAILED SCHEDULE</div>
+            <h1 class="page-title">상세 일정표</h1>
+            <p class="page-subtitle">수련회 기간 동안의 모든 프로그램 일정을 확인하세요</p>
+          </div>
+
+          <!-- 카운트다운 (수련회 시작 전에만 표시) -->
+          <div id="countdown" class="countdown" style="display: none;">
+            <h3 class="countdown-title">수련회 시작까지</h3>
+            <div class="countdown-timer">
+              <div class="countdown-item">
+                <span class="countdown-number" id="days">0</span>
+                <span class="countdown-label">일</span>
+              </div>
+              <div class="countdown-item">
+                <span class="countdown-number" id="hours">0</span>
+                <span class="countdown-label">시간</span>
+              </div>
+              <div class="countdown-item">
+                <span class="countdown-number" id="minutes">0</span>
+                <span class="countdown-label">분</span>
+              </div>
+              <div class="countdown-item">
+                <span class="countdown-number" id="seconds">0</span>
+                <span class="countdown-label">초</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-container">
+            <div class="timeline-header">
+              <div class="current-status">
+                <span class="status-dot"></span>
+                <span id="current-status-text">수련회 준비중</span>
+              </div>
+              <div class="view-toggle">
+                <button class="view-btn active" data-view="timeline">
+                  <i class="fas fa-stream"></i> 타임라인
+                </button>
+                <button class="view-btn" data-view="overview">
+                  <i class="fas fa-th"></i> 전체보기
+                </button>
+              </div>
+            </div>
+
+            <!-- 날짜 탭 -->
+            <div class="day-tabs">
+              <div class="day-tab" data-day="1">
+                <span class="day-tab-title">첫째 날</span>
+                <span class="day-tab-date">7월 4일 (금)</span>
+              </div>
+              <div class="day-tab" data-day="2">
+                <span class="day-tab-title">둘째 날</span>
+                <span class="day-tab-date">7월 5일 (토)</span>
+              </div>
+              <div class="day-tab" data-day="3">
+                <span class="day-tab-title">셋째 날</span>
+                <span class="day-tab-date">7월 6일 (일)</span>
+              </div>
+            </div>
+
+            <!-- 타임라인 뷰 -->
+            <div class="timeline-mode">
+              <div class="timeline" id="timeline">
+                <!-- 타임라인 아이템들은 JavaScript로 동적 생성됩니다 -->
+              </div>
+            </div>
+
+            <!-- 전체보기 뷰 -->
+            <div class="overview-mode" id="overview">
+              <div class="overview-grid">
+                <!-- 전체보기 카드들은 JavaScript로 동적 생성됩니다 -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-info">
+            <div class="footer-logo">JOSHUA 25</div>
+            <p class="footer-desc">예수님을 사랑하고, 함께 성장하며, <br>세상을 변화시키는 청년들의 모임</p>
+          </div>
+          <div class="footer-contact">
+            <h3 class="footer-title">연락처</h3>
+            <ul class="footer-contact-list">
+              <li>
+                <i class="fas fa-map-marker-alt"></i>
+                <span>인천광역시 계양구 아나지로 307번길 10(작전동)</span>
+              </li>
+              <li>
+                <i class="fas fa-phone"></i>
+                <span>032-543-8084</span>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-worship">
+            <h3 class="footer-title">예배 시간</h3>
+            <ul class="footer-worship-list">
+              <li>
+                <i class="fas fa-calendar"></i>
+                <div>
+                  <p class="worship-title">주일 예배</p>
+                  <p class="worship-time">오후 2시 30분</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; <span id="current-year"></span> eunhye_joshua. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/schedule-detail.js"></script>
+</body>
+</html>

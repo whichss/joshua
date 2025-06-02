@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>팀 배정 - 교회 수련회 2024</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="wrapper">
+    <!-- 헤더 -->
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">
+            <a href="index.html">JOSHUA 25</a>
+          </div>
+          <nav class="desktop-nav">
+            <ul>
+              <li><a href="index.html">소개</a></li>
+              <li><a href="schedule-detail.html">상세 일정</a></li>
+              <li><a href="404.html">팀 배정</a></li>
+              <li><a href="404.html">방 배정</a></li>
+              <!--<li><a href="team-assignment.html">팀 배정</a></li>
+              <li><a href="room-assignment.html">방 배정</a></li>-->
+              <li><a href="#register">신청</a></li>
+            </ul>
+          </nav>
+          <div class="header-actions">
+            <button class="btn btn-outline">CONTACT</button>
+            <button class="mobile-menu-btn">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 모바일 메뉴 -->
+    <div class="mobile-menu">
+      <button class="mobile-menu-close">
+        <i class="fas fa-times"></i>
+      </button>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="mobile-link">소개</a></li>
+          <li><a href="schedule-detail.html" class="mobile-link">상세 일정</a></li>
+          <li><a href="404.html">팀 배정</a></li>
+          <li><a href="404.html">방 배정</a></li>
+          <!--<li><a href="team-assignment.html">팀 배정</a></li>
+          <li><a href="room-assignment.html">방 배정</a></li>-->
+          <li><a href="#register" class="mobile-link">신청</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <main>
+      <section class="page-section team-assignment">
+        <div class="container">
+          <div class="page-header">
+            <div class="section-tag light">TEAM ASSIGNMENT</div>
+            <h1 class="page-title">팀 배정</h1>
+            <p class="page-subtitle">수련회 기간 동안 함께 활동할 팀을 확인하세요. 팀별로 다양한 활동과 나눔의 시간이 준비되어 있습니다.</p>
+          </div>
+
+          <div class="search-container">
+            <div class="search-input-wrapper">
+              <i class="fas fa-search"></i>
+              <input type="text" id="team-search" placeholder="이름 또는 팀 검색" class="search-input">
+            </div>
+          </div>
+
+          <div class="team-grid" id="team-grid">
+            <!-- 팀 카드는 JavaScript로 동적 생성됩니다 -->
+          </div>
+
+          <div id="no-results" class="no-results hidden">
+            <p>검색 결과가 없습니다.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-info">
+            <div class="footer-logo">JOSHUA 25</div>
+            <p class="footer-desc">예수님을 사랑하고, 함께 성장하며, <br>세상을 변화시키는 청년들의 모임</p>
+          </div>
+          <div class="footer-contact">
+            <h3 class="footer-title">연락처</h3>
+            <ul class="footer-contact-list">
+              <li>
+                <i class="fas fa-map-marker-alt"></i>
+                <span>인천광역시 계양구 아나지로 307번길 10(작전동)</span>
+              </li>
+              <li>
+                <i class="fas fa-phone"></i>
+                <span>032-543-8084</span>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-worship">
+            <h3 class="footer-title">예배 시간</h3>
+            <ul class="footer-worship-list">
+              <li>
+                <i class="fas fa-calendar"></i>
+                <div>
+                  <p class="worship-title">주일 예배</p>
+                  <p class="worship-time">오후 2시 30분</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; <span id="current-year"></span> eunhye_joshua. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/team-assignment.js"></script>
+</body>
+</html>
