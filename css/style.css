@@ -1138,6 +1138,42 @@ section {
 }
 
 /* 반응형 */
+@media (min-width: 360px) {
+  .hero-title {
+    font-size: 2.5rem;
+    gap: 0.25rem;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .register-info {
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .schedule-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .participant-results {
+    grid-template-columns: 1fr;
+  }
+  
+  .room-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (min-width: 640px) {
   .hero-title {
     font-size: 3.5rem;
