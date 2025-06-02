@@ -1138,7 +1138,7 @@ section {
 }
 
 /* 반응형 */
-@media (min-width: 360px) {
+@media all and (max-width: 360px) {
   .hero-title {
     font-size: 2.5rem;
     gap: 0.25rem;
