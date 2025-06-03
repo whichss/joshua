@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon - JOSHUA 25</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Coming Soon 페이지 전용 스타일 */
+    .coming-soon-section {
+      min-height: calc(100vh - 200px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 0 4rem;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,1));
+    }
+
+    .coming-soon-content {
+      text-align: center;
+      max-width: 800px;
+      width: 100%;
+      animation: fadeIn 1s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .coming-soon-icon {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 2rem;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.7;
+      }
+      50% {
+        transform: scale(1.05);
+        opacity: 1;
+      }
+    }
+
+    .coming-soon-icon svg {
+      width: 100%;
+      height: 100%;
+      stroke: var(--color-blue-400);
+    }
+
+    .coming-soon-title {
+      font-family: var(--font-display);
+      font-size: 4rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--color-blue-400), var(--color-blue-600));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+    }
+
+    .coming-soon-date {
+      font-family: var(--font-body);
+      font-size: 1.25rem;
+      color: var(--color-gray-400);
+      margin-bottom: 3rem;
+      font-weight: 400;
+    }
+
+    /* 카운트다운 스타일 - 기존 CSS 활용 및 수정 */
+    .countdown-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .countdown-item {
+      text-align: center;
+      min-width: auto;
+    }
+
+    .countdown-number {
+      font-family: var(--font-mono);
+      font-size: 4rem;
+      font-weight: 700;
+      color: var(--color-blue-400);
+      line-height: 1;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .countdown-label {
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      color: var(--color-gray-500);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 500;
+    }
+
+    .coming-soon-message {
+      font-family: var(--font-body);
+      font-size: 1.125rem;
+      color: var(--color-gray-300);
+      margin-bottom: 3rem;
+      line-height: 1.75;
+    }
+
+    .coming-soon-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* 반응형 스타일 */
+    @media (max-width: 768px) {
+      .coming-soon-title {
+        font-size: 2.5rem;
+      }
+
+      .countdown-wrapper {
+        gap: 2rem;
+      }
+
+      .countdown-number {
+        font-size: 2.5rem;
+      }
+
+      .coming-soon-date {
+        font-size: 1.125rem;
+      }
+
+      .coming-soon-message {
+        font-size: 1rem;
+      }
+
+      .coming-soon-actions {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 1rem;
+      }
+
+      .coming-soon-actions .btn {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .countdown-wrapper {
+        gap: 1.5rem;
+      }
+
+      .countdown-number {
+        font-size: 2rem;
+      }
+
+      .countdown-label {
+        font-size: 0.75rem;
+      }
+    }
+
+    @media (max-width: 375px) {
+      .coming-soon-title {
+        font-size: 2rem;
+      }
+
+      .countdown-wrapper {
+        gap: 1rem;
+      }
+
+      .countdown-number {
+        font-size: 1.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <!-- 헤더 -->
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">
+            <a href="index.html">JOSHUA 25</a>
+          </div>
+          <nav class="desktop-nav">
+            <ul>
+              <li><a href="index.html">소개</a></li>
+              <li><a href="schedule-detail.html">상세 일정</a></li>
+              <li><a href="404-team.html">팀 배정</a></li>
+              <li><a href="404-room.html">방 배정</a></li>
+              <!--<li><a href="team-assignment.html">팀 배정</a></li>
+              <li><a href="room-assignment.html">방 배정</a></li>-->
+              <li><a href="apply.html">신청</a></li>
+            </ul>
+          </nav>
+          <div class="header-actions">
+            <button class="btn btn-outline" onclick="location.href='apply.html'">CONTACT</button>
+            <button class="mobile-menu-btn">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 모바일 메뉴 -->
+    <div class="mobile-menu">
+      <button class="mobile-menu-close">
+        <i class="fas fa-times"></i>
+      </button>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="mobile-link">소개</a></li>
+          <li><a href="schedule-detail.html" class="mobile-link">상세 일정</a></li>
+          <li><a href="404-team.html">팀 배정</a></li>
+          <li><a href="404-room.html">방 배정</a></li>
+          <!--<li><a href="team-assignment.html">팀 배정</a></li>
+          <li><a href="room-assignment.html">방 배정</a></li>-->
+          <li><a href="apply.html" class="mobile-link">신청</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Coming Soon 섹션 -->
+    <section class="coming-soon-section">
+      <div class="container">
+        <div class="coming-soon-content">
+          <div class="coming-soon-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          
+          <h1 class="coming-soon-title">Coming Soon</h1>
+          <p class="coming-soon-date">2025년 7월 4일 오픈 예정</p>
+          
+          <div class="countdown-wrapper">
+            <div class="countdown-item">
+              <span class="countdown-number" id="days">0</span>
+              <span class="countdown-label">DAYS</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-number" id="hours">0</span>
+              <span class="countdown-label">HOURS</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-number" id="minutes">0</span>
+              <span class="countdown-label">MINUTES</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-number" id="seconds">0</span>
+              <span class="countdown-label">SECONDS</span>
+            </div>
+          </div>
+          
+          <div class="coming-soon-actions">
+            <a href="javascript:history.back()" class="btn btn-outline">
+              <i class="fas fa-arrow-left"></i> 이전 페이지로 돌아가기
+            </a>
+            <a href="index.html" class="btn btn-primary">
+              메인 페이지로 이동 <i class="fas fa-home"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-info">
+            <div class="footer-logo">JOSHUA 25</div>
+            <p class="footer-desc">예수님을 사랑하고, 함께 성장하며, <br>세상을 변화시키는 청년들의 모임</p>
+          </div>
+          <div class="footer-contact">
+            <h3 class="footer-title">연락처</h3>
+            <ul class="footer-contact-list">
+              <li>
+                <i class="fas fa-map-marker-alt"></i>
+                <span>인천광역시 계양구 아나지로 307번길 10(작전동)</span>
+              </li>
+              <li>
+                <i class="fas fa-phone"></i>
+                <span>032-543-8084</span>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-worship">
+            <h3 class="footer-title">예배 시간</h3>
+            <ul class="footer-worship-list">
+              <li>
+                <i class="fas fa-calendar"></i>
+                <div>
+                  <p class="worship-title">주일 예배</p>
+                  <p class="worship-time">오후 2시 30분</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; <span id="current-year"></span> eunhye_joshua. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Set current year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileMenuClose = document.querySelector('.mobile-menu-close');
+
+    mobileMenuBtn?.addEventListener('click', () => {
+      mobileMenu.classList.add('active');
+    });
+
+    mobileMenuClose?.addEventListener('click', () => {
+      mobileMenu.classList.remove('active');
+    });
+
+    // Close mobile menu when clicking on links
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+      });
+    });
+
+    // Header scroll effect
+    const header = document.querySelector('.header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Countdown functionality
+    const targetDate = new Date('2025-07-04T00:00:00').getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        // 카운트다운이 끝나면 자동으로 페이지 전환
+        window.location.href = 'team-assignment.html';
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById('days').textContent = days;
+      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+    }
+
+    // Update countdown every second
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
