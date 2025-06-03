@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <title>수련회 신청 - JOSHUA 25</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .apply-section {
+      padding-top: 8rem;
+      min-height: 100vh;
+      background-color: var(--color-white);
+      color: var(--color-black);
+    }
+    
+    .google-form-container {
+      background-color: var(--color-gray-50);
+      padding: 2rem;
+      border-radius: 12px;
+      margin: 2rem 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .google-form-container iframe {
+      border-radius: 8px;
+    }
+    
+    .apply-info {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .apply-info-card {
+      background-color: var(--color-blue-50);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--color-blue-500);
+    }
+    
+    .apply-info-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: var(--color-blue-700);
+    }
+    
+    .apply-info-card p {
+      color: var(--color-gray-700);
+      line-height: 1.6;
+    }
+    
+    .apply-notice {
+      background-color: #fff3cd;
+      border: 1px solid #ffeaa7;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-top: 2rem;
+    }
+    
+    .apply-notice h4 {
+      color: #856404;
+      margin-bottom: 0.5rem;
+    }
+    
+    .apply-notice ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .apply-notice li {
+      color: #856404;
+      padding: 0.25rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+    
+    .apply-notice li::before {
+      content: '•';
+      position: absolute;
+      left: 0.5rem;
+    }
+    
+    @media (min-width: 768px) {
+      .apply-info {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <!-- 헤더 -->
+    <header class="header scrolled">
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">
+            <a href="index.html">JOSHUA 25</a>
+          </div>
+          <nav class="desktop-nav">
+            <ul>
+              <li><a href="index.html#about">소개</a></li>
+              <li><a href="index.html#schedule">일정</a></li>
+              <li><a href="schedule-detail.html">상세 일정표</a></li>
+              <li><a href="team-assignment.html">팀 배정</a></li>
+              <li><a href="room-assignment.html">방 배정</a></li>
+              <li><a href="apply.html" class="active">신청</a></li>
+            </ul>
+          </nav>
+          <div class="header-actions">
+            <button class="btn btn-outline">CONTACT</button>
+            <button class="mobile-menu-btn">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 모바일 메뉴 -->
+    <div class="mobile-menu">
+      <button class="mobile-menu-close">
+        <i class="fas fa-times"></i>
+      </button>
+      <nav>
+        <ul>
+          <li><a href="index.html#about" class="mobile-link">소개</a></li>
+          <li><a href="index.html#schedule" class="mobile-link">일정</a></li>
+          <li><a href="schedule-detail.html" class="mobile-link">상세 일정표</a></li>
+          <li><a href="team-assignment.html" class="mobile-link">팀 배정</a></li>
+          <li><a href="room-assignment.html" class="mobile-link">방 배정</a></li>
+          <li><a href="apply.html" class="mobile-link">신청</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <main>
+      <section class="page-section apply-section">
+        <div class="container">
+          <div class="page-header">
+            <div class="section-tag">APPLICATION</div>
+            <h1 class="page-title">수련회 신청</h1>
+            <p class="page-subtitle">2025년 7월 15일 - 17일 | 평화 수양관</p>
+          </div>
+
+          <div class="apply-info">
+            <div class="apply-info-card">
+              <h3><i class="fas fa-calendar-check"></i> 신청 기간</h3>
+              <p>
+                <strong>신청 마감:</strong> 2025년 7월 4일(토) 자정<br>
+              </p>
+            </div>
+            <div class="apply-info-card">
+              <h3><i class="fas fa-won-sign"></i> 참가비 안내</h3>
+              <p>
+                <strong>성인(20세 이상):</strong> 60,000원<br>
+              </p>
+            </div>
+          </div>
+
+          <!-- Google Form 임베드 -->
+          <div class="google-form-container">
+            <iframe src="https://docs.google.com/forms/d/e/YOUR_GOOGLE_FORM_ID/viewform?embedded=true" 
+                    width="100%" 
+                    height="1200" 
+                    frameborder="0" 
+                    marginheight="0" 
+                    marginwidth="0">
+              로드 중...
+            </iframe>
+          </div>
+
+          <div class="apply-notice">
+            <h4><i class="fas fa-exclamation-circle"></i> 신청 시 유의사항</h4>
+            <ul>
+              <li>신청서 제출 후 입금을 완료해야 신청이 확정됩니다.</li>
+              <li>입금자명은 반드시 신청자 이름으로 해주세요.</li>
+              <li>입금 계좌: 카카오뱅크 7979-8919-243 (이승미)</li>
+              <li>문의사항: 010-2249-2585 (조상윤 목사) 010-3370-3106 (류병민 회장)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-info">
+            <div class="footer-logo">JOSHUA 25</div>
+            <p class="footer-desc">예수님을 사랑하고, 함께 성장하며, <br>세상을 변화시키는 청년들의 모임</p>
+          </div>
+          <div class="footer-contact">
+            <h3 class="footer-title">연락처</h3>
+            <ul class="footer-contact-list">
+              <li>
+                <i class="fas fa-map-marker-alt"></i>
+                <span>인천광역시 계양구 아나지로 307번길 10(작전동)</span>
+              </li>
+              <li>
+                <i class="fas fa-phone"></i>
+                <span>032-543-8084</span>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-worship">
+            <h3 class="footer-title">예배 시간</h3>
+            <ul class="footer-worship-list">
+              <li>
+                <i class="fas fa-calendar"></i>
+                <div>
+                  <p class="worship-title">주일 예배</p>
+                  <p class="worship-time">오후 2시 30분</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; <span id="current-year"></span> eunhye_joshua. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

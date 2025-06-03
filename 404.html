@@ -2,6 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>comming soon</title>
   <link rel="stylesheet" href="css/style.css">
@@ -20,7 +21,7 @@
     .error-code {
       font-size: 5rem;
       font-weight: 700;
-      line-height: 6.5rem;
+      line-height: 10.0rem;
       margin-bottom: 1rem;
       background: linear-gradient(135deg, var(--color-blue-400), var(--color-blue-600));
       -webkit-background-clip: text;
@@ -116,10 +117,32 @@
             <line x1="15" y1="9" x2="15.01" y2="9"></line>
           </svg>
         </div>
-        <h3 class="error-code">comming soon..</h3>
+           <h3 class="error-code">comming soon..</h3>
+
+                  <!-- 카운트다운 -->
+          <div class="schedule-countdown">
+            <h3 class="schedule-countdown-title">수련회까지 남은 시간</h3>
+            <div class="countdown-timer">
+              <div class="countdown-item">
+                <span class="countdown-number" id="schedule-days">0</span>
+                <span class="countdown-label">일</span>
+              </div>
+              <div class="countdown-item">
+                <span class="countdown-number" id="schedule-hours">0</span>
+                <span class="countdown-label">시간</span>
+              </div>
+              <div class="countdown-item">
+                <span class="countdown-number" id="schedule-minutes">0</span>
+                <span class="countdown-label">분</span>
+              </div>
+              <div class="countdown-item">
+                <span class="countdown-number" id="schedule-seconds">0</span>
+                <span class="countdown-label">초</span>
+              </div>
+            </div>
+          </div>
         <h2 class="error-title"></h2>
         <p class="error-message">
-          현재 요청하신 페이지는 준비중입니다.
         </p>
         <div class="error-actions">
           <a href="javascript:history.back()" class="btn btn-outline">
@@ -174,5 +197,38 @@
   </div>
 
   <script src="js/main.js"></script>
+    <script>
+    // 일정 섹션 카운트다운
+    function startScheduleCountdown() {
+      const retreatStart = new Date('2025-07-04T12:30:00');
+      
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = retreatStart.getTime() - now;
+        
+        if (distance < 0) {
+          // 수련회가 시작되면 카운트다운 숨기기
+          document.querySelector('.schedule-countdown').style.display = 'none';
+          return;
+        }
+        
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        document.getElementById('schedule-days').textContent = days;
+        document.getElementById('schedule-hours').textContent = hours;
+        document.getElementById('schedule-minutes').textContent = minutes;
+        document.getElementById('schedule-seconds').textContent = seconds;
+      }
+      
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    }
+    
+    // 페이지 로드 시 카운트다운 시작
+    document.addEventListener('DOMContentLoaded', startScheduleCountdown);
+  </script>
 </body>
 </html>

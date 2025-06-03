@@ -1,4 +1,55 @@
 document.addEventListener('DOMContentLoaded', function() {
+  // 수련회 시작 날짜 (2025년 7월 15일 14:00)
+  const retreatStart = new Date('2025-07-15T14:00:00');
+  
+  // 카운트다운 요소
+  const countdownContainer = document.getElementById('countdown-container');
+  const teamContent = document.getElementById('team-content');
+  
+  // 현재 시간 확인 및 표시 결정
+  function checkTimeAndDisplay() {
+    const now = new Date();
+    
+    if (now < retreatStart) {
+      // 수련회 시작 전 - 카운트다운 표시
+      countdownContainer.style.display = 'block';
+      teamContent.style.display = 'none';
+      startCountdown();
+    } else {
+      // 수련회 시작 후 - 팀 배정 표시
+      countdownContainer.style.display = 'none';
+      teamContent.style.display = 'block';
+      renderTeams();
+    }
+  }
+  
+  // 카운트다운 시작
+  function startCountdown() {
+    updateCountdown(); // 즉시 실행
+    const interval = setInterval(updateCountdown, 1000);
+    
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = retreatStart.getTime() - now;
+      
+      if (distance < 0) {
+        clearInterval(interval);
+        checkTimeAndDisplay(); // 시간이 되면 팀 배정 표시
+        return;
+      }
+      
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+      document.getElementById('days').textContent = days;
+      document.getElementById('hours').textContent = hours;
+      document.getElementById('minutes').textContent = minutes;
+      document.getElementById('seconds').textContent = seconds;
+    }
+  }
+  
   // 팀 데이터
   const teams = [
     {
@@ -117,6 +168,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // 팀 목록 렌더링
   function renderTeams(searchTerm = '') {
+    if (!teamGrid) return;
+    
     teamGrid.innerHTML = '';
     
     const filteredTeams = teams.filter(team => {
@@ -140,13 +193,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // 초기 렌더링
-  renderTeams();
-
   // 검색 기능
   if (searchInput) {
     searchInput.addEventListener('input', function() {
       renderTeams(this.value);
     });
   }
+  
+  // 초기 실행
+  checkTimeAndDisplay();
 });
