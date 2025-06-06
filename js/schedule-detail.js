@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
       },
       {
         time: '12:30',
-        title: '물어보3',
+        title: '마음 챙김',
         description: '질문과 토론을 통해 서로를 알아가는 시간입니다.',
         location: '소그룹 장소',
         person: 'MC팀'
