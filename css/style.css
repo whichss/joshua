@@ -1791,6 +1791,38 @@ section {
   .page-title {
     font-size: 2rem;
   }
+  .location-text {
+    padding-right: 0.5rem; /* 우측 여백 확보 */
+  }
+  .location-image iframe {
+    width: 100% !important;
+    height: 250px !important;
+  }
+}
+/* 376px - 630px 구간에서 Location 텍스트 잘림 해결 */
+@media (min-width: 376px) and (max-width: 630px) {
+  .location-text {
+    max-width: 100%;
+    padding-right: 1.0rem;
+    box-sizing: border-box;
+  }
+  
+  .location-text p {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-break: break-word; /* keep-all 대신 break-word로 변경 */
+    hyphens: auto;
+  }
+  
+  /* 컨테이너 안전 영역 확보 */
+  .location .container {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+  
+  .location-grid {
+    gap: 1.5rem; /* 간격 줄이기 */
+  }
 }
 
 /* 가로 스크롤 방지 */
