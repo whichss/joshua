@@ -1,171 +1,157 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // 일정 데이터
+  // 일정 데이터 (2번째 파일의 실제 일정으로 업데이트)
   const scheduleData = {
     1: [
       {
-        time: '12:30',
-        title: '집결',
+        time: '12:00',
+        title: '집합',
         description: '교회에서 모여 수련회를 시작합니다.',
-        location: '교회 본당',
-        person: '행정팀'
+        location: '교회',
+        person: '여호수아'
       },
       {
         time: '13:00',
         title: '출발',
         description: '버스를 타고 수련회 장소로 이동합니다.',
-        location: '교회 앞',
-        person: '행정팀'
+        location: '교회',
+        person: '여호수아'
       },
       {
         time: '15:00',
         title: '개회 예배',
         description: '수련회의 시작을 예배로 함께합니다.',
-        location: '대강당',
-        person: '송동권 목사'
+        location: '예배당',
+        person: '조상윤 목사'
       },
       {
         time: '16:00',
-        title: '아이스브레이킹',
-        description: '서로를 알아가고 친밀해지는 활동입니다.',
-        location: '야외 또는 대강당',
-        person: '레크리에이션팀'
+        title: '대충 맞혀도 되는 퀴즈',
+        description: '재미있는 퀴즈를 통해 서로를 알아가는 시간입니다.',
+        location: '예배당',
+        person: '여호수아'
       },
       {
         time: '18:00',
         title: '저녁 식사',
         description: '식당에서 저녁 식사를 함께 합니다.',
         location: '식당',
-        person: '식사팀'
+        person: '여호수아'
       },
       {
         time: '19:30',
-        title: '집회',
+        title: 'RE:Fire집회',
         description: '첫째 날 메인 집회입니다.',
-        location: '대강당',
-        person: '송동권 목사'
+        location: '예배당',
+        person: '은혜교회 허평석 담임목사'
       },
       {
         time: '22:00',
-        title: '나눔',
-        description: '조별 모임을 통해 오늘 받은 은혜를 나눕니다.',
+        title: '나눔 및 취침',
+        description: '조별 모임을 통해 오늘 받은 은혜를 나누고 취침합니다.',
         location: '각 팀별 지정 장소',
         person: '팀 리더'
       }
     ],
     2: [
       {
-        time: '08:30',
+        time: '08:00',
         title: '아침 미션',
         description: '하루를 시작하는 가벼운 미션 활동입니다.',
-        location: '야외',
-        person: '레크리에이션팀'
+        location: '예배당',
+        person: '여호수아'
       },
       {
         time: '09:00',
         title: '아침 식사 및 개인 정비',
         description: '아침 식사 후 개인 정비 시간입니다.',
         location: '식당 / 숙소',
-        person: '식사팀'
+        person: '여호수아'
       },
       {
         time: '09:30',
-        title: '세미나',
+        title: '사무엘의 세미나',
         description: '주제에 따라 다양한 강의가 진행됩니다.',
-        location: '대강당',
-        person: '강사팀'
+        location: '예배당',
+        person: '정사무엘 목사'
       },
       {
         time: '11:30',
         title: '점심 식사',
         description: '식당에서 점심 식사를 합니다.',
         location: '식당',
-        person: '식사팀'
+        person: '여호수아'
       },
       {
         time: '12:30',
-        title: '마음 챙김',
-        description: '질문과 토론을 통해 서로를 알아가는 시간입니다.',
-        location: '소그룹 장소',
-        person: 'MC팀'
+        title: '마음 쉐마: 나를 듣고, 주님을 만나다',
+        description: '질문과 토론을 통해 서로를 알아가고 주님을 만나는 시간입니다.',
+        location: '예배당',
+        person: '여호수아'
       },
       {
         time: '15:00',
-        title: '물놀이',
-        description: '무더위를 날려버릴 시원한 물놀이 시간입니다.',
-        location: '수영장 또는 계곡',
-        person: '안전팀'
+        title: '물 튀면 시작이다! 물 만난 배구왕',
+        description: '무더위를 날려버릴 시원한 물놀이와 배구 시간입니다.',
+        location: '수영장 또는 야외',
+        person: '여호수아'
       },
       {
         time: '17:00',
         title: '저녁 식사',
         description: '맛있는 저녁을 함께 합니다.',
         location: '식당',
-        person: '식사팀'
+        person: '여호수아'
       },
       {
         time: '19:30',
-        title: '집회',
+        title: 'RE:Fire집회',
         description: '둘째 날 메인 집회입니다.',
-        location: '대강당',
-        person: '허평석 담임 목사'
+        location: '예배당',
+        person: '필그림 교회 송동권 목사'
       },
       {
         time: '22:00',
-        title: '나눔',
-        description: '오늘의 은혜를 조별로 나누는 시간입니다.',
+        title: '나눔 및 취침',
+        description: '오늘의 은혜를 조별로 나누고 취침합니다.',
         location: '각 팀별 지정 장소',
         person: '팀 리더'
       }
     ],
     3: [
       {
-        time: '08:30',
-        title: '아침 체조',
-        description: '몸을 깨우는 간단한 체조 시간입니다.',
-        location: '야외',
-        person: '레크리에이션팀'
-      },
-      {
-        time: '09:00',
+        time: '08:00',
         title: '아침 식사 및 개인 정비',
         description: '식사 후 개인 짐 정리 시간입니다.',
         location: '식당 / 숙소',
-        person: '식사팀'
+        person: '여호수아'
       },
       {
         time: '09:30',
         title: '폐회예배',
         description: '수련회를 마무리하는 감사 예배입니다.',
-        location: '대강당',
-        person: '인도자'
-      },
-      {
-        time: '10:30',
-        title: '숙소 정리',
-        description: '숙소를 정리하고 퇴실 준비를 합니다.',
-        location: '숙소',
-        person: '참가자 전원'
+        location: '예배당',
+        person: '조상윤 목사'
       },
       {
         time: '11:00',
-        title: '점심 식사',
+        title: '점심식사',
         description: '마지막 식사를 함께 합니다.',
         location: '식당',
-        person: '식사팀'
+        person: '여호수아'
       },
       {
-        time: '15:00',
-        title: '귀가',
-        description: '모든 일정을 마치고 집으로 돌아갑니다.',
-        location: '교회 도착',
-        person: '행정팀'
+        time: '12:30',
+        title: '이동 및 교회도착',
+        description: '모든 일정을 마치고 교회로 돌아갑니다.',
+        location: '교회',
+        person: '여호수아'
       }
     ]
   };
 
-  // 수련회 날짜 설정 (2025년 7월 05일 ~ 07일)
-  const retreatStart = new Date('2025-07-05T14:00:00');
-  const retreatEnd = new Date('2025-07-07T14:00:00');
+  // 수련회 날짜 설정 (2025년 7월 4일 ~ 6일로 수정)
+  const retreatStart = new Date('2025-07-04T12:00:00');
+  const retreatEnd = new Date('2025-07-06T12:30:00');
 
   // DOM 요소들
   const dayTabs = document.querySelectorAll('.day-tab');
