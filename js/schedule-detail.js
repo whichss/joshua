@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const scheduleData = {
     1: [
       {
-        time: '12:00',
+        time: '12:30',
         title: '집합',
         description: '교회에서 모여 수련회를 시작합니다.',
         location: '교회',
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
         person: '여호수아'
       },
       {
-        time: '12:30',
+        time: '13:00',
         title: '마음 쉐마: 나를 듣고, 주님을 만나다',
         description: '질문과 토론을 통해 서로를 알아가고 주님을 만나는 시간입니다.',
         location: '예배당',
@@ -131,6 +131,13 @@ document.addEventListener('DOMContentLoaded', function() {
         description: '수련회를 마무리하는 감사 예배입니다.',
         location: '예배당',
         person: '조상윤 목사'
+      },
+      {
+        time: '10:30',
+        title: '숙소정리',
+        description: '수련회동안 이용한 장소를 정리하는 시간입니다.',
+        location: '전체',
+        person: '수련회 모두'
       },
       {
         time: '11:00',
